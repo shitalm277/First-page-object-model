@@ -6,13 +6,13 @@ import static org.testng.Assert.assertEquals;
 public class DesktopPage extends Utils{
     public void verifyUserIsOnDesktopPage()
     {
-        Assert.assertTrue(driver.getCurrentUrl().contains("desktops"));
+        Assert.assertTrue(driver.getCurrentUrl().contains(loadProp.getProperty("UserIsOnDesktopPageContains")));
 
     }
     public void verifyUserIsShownDesktopMenu(){
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         String actualPageTitle = getTextFromElement(By.xpath("//div[@class='page-title']/h1"));
-        String expectedPageTitle = "Desktops";
+        String expectedPageTitle = loadProp.getProperty("expectedPageTitleForDesktops");
         assertEquals(actualPageTitle, expectedPageTitle);
     }
 

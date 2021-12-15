@@ -8,6 +8,7 @@ import java.util.concurrent.TimeUnit;
 
 public class BrowserManager extends BasePage {
     String browserName = "Chrome";
+    LoadProp loadProp = new LoadProp();
 
     public void openBrowser(){
         if (browserName.equalsIgnoreCase("Chrome"))
@@ -31,10 +32,12 @@ public class BrowserManager extends BasePage {
         }
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
-        driver.get("https://demo.nopcommerce.com/");
+        //driver.get("https://demo.nopcommerce.com/");
+        driver.get (loadProp.getProperty("url"));
     }
 
-    public void closeBrowser(){
+    public void closeBrowser()
+    {
         driver.close();
     }
 }
